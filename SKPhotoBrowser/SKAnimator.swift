@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 @objc public protocol SKPhotoBrowserAnimatorDelegate {
     func willPresent(_ browser: SKPhotoBrowser)
@@ -60,7 +61,7 @@ class SKAnimator: NSObject, SKPhotoBrowserAnimatorDelegate {
         
         senderViewOriginalFrame = calcOriginFrame(sender)
         finalImageViewFrame = calcFinalFrame(imageRatio)
-        resizableImageView = UIImageView(image: imageFromView)
+        resizableImageView = SDAnimatedImageView(image: imageFromView)
         
         if let resizableImageView = resizableImageView {
             resizableImageView.frame = senderViewOriginalFrame
