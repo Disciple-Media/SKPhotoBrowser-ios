@@ -342,7 +342,7 @@ public extension SKPhotoBrowser {
     
     func toggleControls() {
         let hidden = !areControlsHidden()
-        setControlsHidden(hidden, animated: true, permanent: false)
+        setControlsHidden(hidden, animated: true, permanent: true)
         delegate?.controlsVisibilityToggled?(self, hidden: areControlsHidden())
     }
     
