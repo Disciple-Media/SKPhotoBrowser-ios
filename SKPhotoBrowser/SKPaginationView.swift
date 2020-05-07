@@ -16,7 +16,6 @@ class SKPaginationView: UIView {
     var nextButton: UIButton?
     private var margin: CGFloat = 100
     private var extraMargin: CGFloat = SKMesurement.isPhoneX ? 40 : 0
-    private let paginationButtonSize: CGFloat = 44
 
     fileprivate weak var browser: SKPhotoBrowser?
     
@@ -113,7 +112,8 @@ private extension SKPaginationView {
         guard browser?.photos.count ?? 0 > 1 else { return }
         
         let button = SKPrevButton(frame: frame)
-        button.center = CGPoint(x: paginationButtonSize / 2, y: frame.height / 2)
+        button.center = CGPoint(x: SKPaginationButton.paginationButtonSize / 2,
+                                y: frame.height / 2)
         button.addTarget(browser, action: #selector(SKPhotoBrowser.gotoPreviousPage), for: .touchUpInside)
         addSubview(button)
         prevButton = button
@@ -124,7 +124,8 @@ private extension SKPaginationView {
         guard browser?.photos.count ?? 0 > 1 else { return }
         
         let button = SKNextButton(frame: frame)
-        button.center = CGPoint(x: frame.width - paginationButtonSize / 2, y: frame.height / 2)
+        button.center = CGPoint(x: frame.width - SKPaginationButton.paginationButtonSize / 2,
+                                y: frame.height / 2)
         button.addTarget(browser, action: #selector(SKPhotoBrowser.gotoNextPage), for: .touchUpInside)
         addSubview(button)
         nextButton = button
@@ -132,6 +133,7 @@ private extension SKPaginationView {
 }
 
 class SKPaginationButton: UIButton {
+    static let paginationButtonSize: CGFloat = 44
     let insets: UIEdgeInsets = UIEdgeInsets(top: 13.25, left: 17.25, bottom: 13.25, right: 17.25)
     
     func setup(_ imageName: String) {
@@ -157,7 +159,10 @@ class SKPrevButton: SKPaginationButton {
     }
     
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: 0, y: 0, width: paginationButtonSize, height: paginationButtonSize))
+        super.init(frame: CGRect(x: 0,
+                                 y: 0,
+                                 width: SKPaginationButton.paginationButtonSize,
+                                 height: SKPaginationButton.paginationButtonSize))
         setup(imageName)
     }
 }
@@ -169,7 +174,10 @@ class SKNextButton: SKPaginationButton {
     }
     
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: 0, y: 0, width: paginationButtonSize, height: paginationButtonSize))
+        super.init(frame: CGRect(x: 0,
+                                 y: 0,
+                                 width: SKPaginationButton.paginationButtonSize,
+                                 height: SKPaginationButton.paginationButtonSize))
         setup(imageName)
     }
 }
