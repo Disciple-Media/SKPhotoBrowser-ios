@@ -111,7 +111,7 @@ open class SKPhotoBrowser: UIViewController {
         configureGestureControl()
         configureActionView()
         configurePaginationView()
-        configureToolbar()
+//        configureToolbar() // we don't need it and it's blocking pagination buttons
 
         animator.willPresent(self)
     }
