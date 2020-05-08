@@ -111,7 +111,7 @@ open class SKPhotoBrowser: UIViewController {
         configureGestureControl()
         configureActionView()
         configurePaginationView()
-//        configureToolbar() // we don't need it and it's blocking pagination buttons
+        configureToolbar()
 
         animator.willPresent(self)
     }
@@ -575,7 +575,7 @@ private extension SKPhotoBrowser {
     
     func configureToolbar() {
         toolbar = SKToolbar(frame: frameForToolbarAtOrientation(), browser: self)
-        view.addSubview(toolbar)
+//        view.addSubview(toolbar) // we don't need it and it's blocking pagination buttons
     }
 
     func setControlsHidden(_ hidden: Bool, animated: Bool, permanent: Bool) {
