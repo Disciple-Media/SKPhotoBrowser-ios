@@ -112,10 +112,12 @@ private extension SKPaginationView {
         guard browser?.photos.count ?? 0 > 1 else { return }
         
         let button = SKPrevButton(frame: frame)
-        button.center = CGPoint(x: SKPaginationButton.paginationButtonSize / 2,
-                                y: frame.height / 2)
         button.addTarget(browser, action: #selector(SKPhotoBrowser.gotoPreviousPage), for: .touchUpInside)
         addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.leadingAnchor.constraint(equalTo: self.leadingAnchor,
+                                        constant: SKPaginationButton.paginationButtonSize / 2).isActive = true
+        button.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         prevButton = button
     }
     
@@ -124,10 +126,12 @@ private extension SKPaginationView {
         guard browser?.photos.count ?? 0 > 1 else { return }
         
         let button = SKNextButton(frame: frame)
-        button.center = CGPoint(x: frame.width - SKPaginationButton.paginationButtonSize / 2,
-                                y: frame.height / 2)
         button.addTarget(browser, action: #selector(SKPhotoBrowser.gotoNextPage), for: .touchUpInside)
         addSubview(button)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.trailingAnchor.constraint(equalTo: self.trailingAnchor,
+                                         constant: SKPaginationButton.paginationButtonSize / 2).isActive = true
+        button.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         nextButton = button
     }
 }
