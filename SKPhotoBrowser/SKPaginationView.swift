@@ -118,6 +118,8 @@ private extension SKPaginationView {
         button.leadingAnchor.constraint(equalTo: self.leadingAnchor,
                                         constant: SKPaginationButton.paginationButtonSize / 2).isActive = true
         button.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        button.widthAnchor.constraint(equalToConstant: SKPaginationButton.paginationButtonSize).isActive = true
+        button.heightAnchor.constraint(equalToConstant: SKPaginationButton.paginationButtonSize).isActive = true
         prevButton = button
     }
     
@@ -130,8 +132,10 @@ private extension SKPaginationView {
         addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.trailingAnchor.constraint(equalTo: self.trailingAnchor,
-                                         constant: SKPaginationButton.paginationButtonSize / 2).isActive = true
+                                         constant: -(SKPaginationButton.paginationButtonSize / 2)).isActive = true
         button.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        button.widthAnchor.constraint(equalToConstant: SKPaginationButton.paginationButtonSize).isActive = true
+        button.heightAnchor.constraint(equalToConstant: SKPaginationButton.paginationButtonSize).isActive = true
         nextButton = button
     }
 }
