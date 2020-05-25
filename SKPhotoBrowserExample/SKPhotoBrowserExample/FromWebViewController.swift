@@ -60,8 +60,7 @@ class CustomImageCache: SKImageCacheable {
     var cache: SDImageCache
     
     init() {
-        let cache = SDImageCache(namespace: "com.suzuki.custom.cache")
-        self.cache = cache!
+        self.cache = SDImageCache(namespace: "com.suzuki.custom.cache")
     }
 
     func imageForKey(_ key: String) -> UIImage? {
