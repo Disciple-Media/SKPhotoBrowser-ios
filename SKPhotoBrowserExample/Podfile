@@ -2,5 +2,12 @@ platform :ios, '9.0'
 use_frameworks!
 
 target "SKPhotoBrowserExample" do
+	workspace 'SKPhotoBrowserExample.xcworkspace'
+	project 'SKPhotoBrowserExample.xcodeproj'
     pod 'SDWebImage'
+
+    target 'SKPhotoBrowser' do
+        project '../SKPhotoBrowser.xcodeproj'
+        inherit! :search_paths
+    end
 end
