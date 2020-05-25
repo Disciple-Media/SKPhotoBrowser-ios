@@ -112,14 +112,9 @@ private extension SKPaginationView {
         guard browser?.photos.count ?? 0 > 1 else { return }
         
         let button = SKPrevButton(frame: frame)
+        button.center = CGPoint(x: SKPaginationButton.paginationButtonSize / 2, y: frame.height / 2)
         button.addTarget(browser, action: #selector(SKPhotoBrowser.gotoPreviousPage), for: .touchUpInside)
         addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.leadingAnchor.constraint(equalTo: self.leadingAnchor,
-                                        constant: SKPaginationButton.paginationButtonSize / 2).isActive = true
-        button.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        button.widthAnchor.constraint(equalToConstant: SKPaginationButton.paginationButtonSize).isActive = true
-        button.heightAnchor.constraint(equalToConstant: SKPaginationButton.paginationButtonSize).isActive = true
         prevButton = button
     }
     
@@ -128,14 +123,9 @@ private extension SKPaginationView {
         guard browser?.photos.count ?? 0 > 1 else { return }
         
         let button = SKNextButton(frame: frame)
+        button.center = CGPoint(x: frame.width - SKPaginationButton.paginationButtonSize / 2, y: frame.height / 2)
         button.addTarget(browser, action: #selector(SKPhotoBrowser.gotoNextPage), for: .touchUpInside)
         addSubview(button)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.trailingAnchor.constraint(equalTo: self.trailingAnchor,
-                                         constant: -(SKPaginationButton.paginationButtonSize / 2)).isActive = true
-        button.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        button.widthAnchor.constraint(equalToConstant: SKPaginationButton.paginationButtonSize).isActive = true
-        button.heightAnchor.constraint(equalToConstant: SKPaginationButton.paginationButtonSize).isActive = true
         nextButton = button
     }
 }
@@ -148,10 +138,6 @@ class SKPaginationButton: UIButton {
         backgroundColor = .clear
         imageEdgeInsets = insets
         translatesAutoresizingMaskIntoConstraints = true
-        autoresizingMask = [.flexibleBottomMargin,
-                            .flexibleLeftMargin,
-                            .flexibleRightMargin,
-                            .flexibleTopMargin]
         contentMode = .center
         
         let image = UIImage(named: "SKPhotoBrowser.bundle/images/\(imageName)",
@@ -172,6 +158,10 @@ class SKPrevButton: SKPaginationButton {
                                  width: SKPaginationButton.paginationButtonSize,
                                  height: SKPaginationButton.paginationButtonSize))
         setup(imageName)
+
+        autoresizingMask = [.flexibleBottomMargin,
+                            .flexibleRightMargin,
+                            .flexibleTopMargin]
     }
 }
 
@@ -187,5 +177,9 @@ class SKNextButton: SKPaginationButton {
                                  width: SKPaginationButton.paginationButtonSize,
                                  height: SKPaginationButton.paginationButtonSize))
         setup(imageName)
+
+        autoresizingMask = [.flexibleBottomMargin,
+                            .flexibleLeftMargin,
+                            .flexibleTopMargin]
     }
 }
