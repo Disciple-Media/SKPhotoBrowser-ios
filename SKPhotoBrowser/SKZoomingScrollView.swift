@@ -254,7 +254,7 @@ extension SKZoomingScrollView: UIScrollViewDelegate {
     }
     
     public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) {
-        browser?.cancelControlHiding()
+        browser?.toggleControls()
     }
     
     public func scrollViewDidZoom(_ scrollView: UIScrollView) {
